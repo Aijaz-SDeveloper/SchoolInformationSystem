@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="School-Live" Class="SchoolDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-LEPLUBD\SQLEXPRESS;Initial Catalog=School-Live;Persist Security Info=True;User ID=sa" SettingsObjectName="Frontend.Properties.Settings" SettingsPropertyName="School_LiveConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ComParameterType" Member="ComParameterTypes">
+    <Type Name="ComParameterType">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsBranchLevel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsParent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ComParameters" Member="ComParameters">
+    <Type Name="ComParameter">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BranchId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BL_Audit" Member="BL_Audits">
+    <Type Name="BL_Audit">
+      <Column Name="Id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Action_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Action_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IP" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Doc_Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Doc_Name" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Master_Id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Detail_Id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="BranchId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.YearDefination" Member="YearDefinations">
+    <Type Name="YearDefination">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="YearName" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fees_Collection" Member="Fees_Collections">
+    <Type Name="Fees_Collection">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="StId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PaidDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CurrentStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cDocumentNumbers" Member="cDocumentNumbers">
+    <Type Name="cDocumentNumber">
+      <Column Name="nCompanyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="vcDocumentNumber" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="vcLocation" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nFinancialYear" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nSequenceNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vcPrefix" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fees_Assignment" Member="Fees_Assignments">
+    <Type Name="Fees_Assignment">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FeeId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="StId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AssignmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OpeningAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IsOpening" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CurrentStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Month" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DocumentNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student_Profile" Member="Student_Profiles">
+    <Type Name="Student_Profile">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CNIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StudyClassId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AdmissionClassId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SecId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="GuardianName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GuardianRelationId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GRNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ReligionId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CasteId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PlaceOBCityId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LastSchoolId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProfessionId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PermAdress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PermMobileNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PermPhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PresentAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PresentMobileNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PresentPhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OfficeAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="OfficeMobileNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OfficePhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RollNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GenderId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Pic" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CurrentStatus" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PicPath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="YearId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ActionTypeId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fees_Open" Member="Fees_Opens">
+    <Type Name="Fees_Open">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FeeId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="StId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="OpeningAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CurrentStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="YearId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
